@@ -63,7 +63,7 @@ class Api {
 
   /** убираем поставленный лайк с сервера*/
   deleteCardLike(id) {
-    return fetch(`${this._serverUrl}/cards/likes/${id}`, {
+    return fetch(`${this._serverUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._getHeaders(),
     })
