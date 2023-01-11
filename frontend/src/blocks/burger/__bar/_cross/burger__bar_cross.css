@@ -1,0 +1,15 @@
+.burger__bar_cross {
+    margin-bottom: -1px;
+}
+
+.burger__bar_cross:nth-child(1) {
+    transform: translateY(1px) rotate(-45deg);
+}
+
+.burger__bar_cross:nth-child(2) {
+    display: none;
+}
+
+.burger__bar_cross:nth-child(3) {
+    transform: translateY(-1px) rotate(45deg);
+}

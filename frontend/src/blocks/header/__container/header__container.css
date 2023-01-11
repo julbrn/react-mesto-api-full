@@ -1,0 +1,21 @@
+.header__container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+
+@media screen and (max-width: 950px) {
+    .header__container {
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 635px) {
+    .header__container{
+        min-height: 142px;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid rgba(84, 84, 84, .7);
+    }
+}

@@ -1,0 +1,7 @@
+@media (max-width: 635px) {
+    .header_mobile {
+        flex-direction: column-reverse;
+       justify-items: center;
+
+    }
+}

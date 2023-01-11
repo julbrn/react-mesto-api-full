@@ -1,0 +1,17 @@
+.card {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-bottom: 28px;
+  width: 100%;
+  min-height: 361px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: transparent;
+}
+

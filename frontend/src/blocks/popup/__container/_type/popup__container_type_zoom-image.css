@@ -1,0 +1,11 @@
+.popup__container_type_zoom-image {
+padding: 0;
+margin: 0;
+outline: none;
+max-width: 75vw;
+max-height: 75vh;
+width: auto;
+height: auto;
+border-radius: 0px;
+background-color: transparent;
+}

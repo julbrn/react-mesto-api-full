@@ -1,0 +1,12 @@
+.not-found__button {
+    text-decoration-color: #fff;
+    text-transform: uppercase;
+    text-underline-offset: 5px;
+    font-family: inherit;
+    color: #fff;
+    transition: opacity .3s linear;
+}
+
+.not-found__button:hover {
+    opacity: .6;
+}

@@ -1,0 +1,13 @@
+.content {
+  max-width: 880px;
+  min-width: 282px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 928px) {
+  .content {
+  padding: 0 19px 0;
+  }
+}

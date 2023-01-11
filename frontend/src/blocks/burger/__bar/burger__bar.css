@@ -1,0 +1,8 @@
+.burger__bar {
+    background-color: #fff;
+    display: block;
+    height: 3px;
+    width: 24px;
+    transition: .3s all;
+    margin: 0 auto 6px;
+}

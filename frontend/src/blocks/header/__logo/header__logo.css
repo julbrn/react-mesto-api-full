@@ -1,0 +1,13 @@
+.header__logo {
+  line-height: 0;
+  font-size: 0;
+  min-height: 119px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 635px) {
+  .header__logo {
+    min-height: 84px;
+  }
+}

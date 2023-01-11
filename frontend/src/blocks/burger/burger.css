@@ -1,0 +1,20 @@
+.burger {
+    display: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    position: absolute;
+    align-self: flex-end;
+    right: 30px;
+    bottom: 30px;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 635px) {
+    .burger {
+        display: block;
+    }
+}
