@@ -15,6 +15,7 @@ const { STATUS_MESSAGE } = require('./utils/STATUS_MESSAGE');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateSignup, validateSignin } = require('./middlewares/celebrate');
 const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 5555 } = process.env;
 const app = express();
@@ -24,6 +25,7 @@ app.use(cors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
+app.use(requestLogger);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -44,6 +46,8 @@ app.use('/', auth, cardsRoute);
 app.use('*', () => {
   throw new NotFoundError(STATUS_MESSAGE.PAGE_NOT_FOUND_MESSAGE);
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 app.use(errorHandler);
