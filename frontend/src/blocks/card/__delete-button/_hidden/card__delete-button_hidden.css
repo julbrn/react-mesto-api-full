@@ -3,7 +3,7 @@
   visibility: hidden;
 }
 
-.card__delete-button:hover {
+.card__delete-button_hidden:hover {
   opacity: 0;
   visibility: hidden;
 }

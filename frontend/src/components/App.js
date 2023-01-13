@@ -203,8 +203,9 @@ function App() {
         if (token) {
             auth.getProfile(token)
                 .then((res) => {
-                    if (res.data) {
-                        setUserEmail(res.data.email);
+                    if (res) {
+                        setUserEmail(res.user.email);
+                        console.log(res.user.email)
                         setIsLoggedIn(true);
                         history.push('/')
                     }

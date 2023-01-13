@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { Route, Switch, Link, useLocation } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import logo from "../images/header/logo.svg";
 
 function Header({ onSignOut, email, isLoggedIn, loginLinkText, registerLinkText }) {
-    const location = useLocation();
     const [isClickedBurger, setIsClickedBurger] = useState(false);
     function handleClickBurgerMenu() {
         setIsClickedBurger(!isClickedBurger)
     }
     return (
         <header className={`header ${isLoggedIn ? 'header_mobile' : ''}`}>
-            <a href="#" className="header__logo" target="_blank"
+            <a href="/" className="header__logo" target="_blank"
             ><img
                     className="header__logo-img"
                     src={logo}
