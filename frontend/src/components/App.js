@@ -205,7 +205,6 @@ function App() {
                 .then((res) => {
                     if (res) {
                         setUserEmail(res.user.email);
-                        console.log(res.user.email)
                         setIsLoggedIn(true);
                         history.push('/')
                     }
