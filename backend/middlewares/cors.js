@@ -3,12 +3,9 @@ const allowedCors = [
     'https://julbrn.nomoredomains.rocks',
     'https://api.julbrn.nomoredomains.rocks',
     'http://api.julbrn.nomoredomains.rocks',
-    'localhost:5555',
-    'localhost:7777',
-    'http://localhost:7777',
-    'http://localhost:5555',
-    'https://localhost:7777',
-    'https://localhost:5555',
+    'localhost:3000',
+    'http://localhost:3000',
+    'https://localhost:3000',
 ];
 
 module.exports = (req, res, next) => {

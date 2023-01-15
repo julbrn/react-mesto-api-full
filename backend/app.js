@@ -17,7 +17,7 @@ const { validateSignup, validateSignin } = require('./middlewares/celebrate');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 5555 } = process.env;
+const { PORT = 3000 } = process.env;
 const { DATABASE__URL } = process.env;
 const app = express();
 

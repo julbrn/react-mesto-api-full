@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npx eslint .",
     "start": "node app.js",
-    "dev": "cross-env PORT=5555 nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/julbrn/express-mesto-gha#readme",
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
