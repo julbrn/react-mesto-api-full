@@ -1,13 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import '../index.css';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-//import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-//import Input from "./Input";
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from "./EditProfilePopup";

@@ -18,6 +18,7 @@ const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 5555 } = process.env;
+const { DATABASE__URL } = process.env;
 const app = express();
 
 app.use(cors);
@@ -32,10 +33,16 @@ const limiter = rateLimit({
   max: 100,
 });
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(DATABASE__URL, {
   useNewUrlParser: true,
 });
 app.use(limiter);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', validateSignin, login);
 app.post('/signup', validateSignup, createUser);
