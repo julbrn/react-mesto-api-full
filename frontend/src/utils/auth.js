@@ -29,6 +29,7 @@ export const signIn = (email, password) => {
         headers: {
             'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify({ email, password })
     })
         .then((res) => checkServerResponse(res))
@@ -42,6 +43,7 @@ export function getProfile(token) {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
+        credentials: 'include',
     })
         .then((res) => checkServerResponse(res))
 }
