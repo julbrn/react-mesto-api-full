@@ -14,14 +14,14 @@ const { NotFoundError } = require('./errors/notFoundError');
 const { STATUS_MESSAGE } = require('./utils/STATUS_MESSAGE');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateSignup, validateSignin } = require('./middlewares/celebrate');
-const cors = require('./middlewares/cors');
+const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const { DATABASE__URL } = process.env;
 const app = express();
 
-app.use(cors);
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
