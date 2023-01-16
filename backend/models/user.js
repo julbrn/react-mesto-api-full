@@ -7,7 +7,6 @@ const { UnauthorizedError } = require('../errors/unauthorizedError');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 30,
     trim: true,
@@ -15,7 +14,6 @@ const userSchema = new mongoose.Schema({
   },
   about: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 30,
     trim: true,
@@ -23,7 +21,6 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    required: true,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     trim: true,
     validate: {
@@ -41,14 +38,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minLength: 3,
     trim: true,
   },
   password: {
     type: String,
     required: true,
     select: false,
-    minLength: 3,
     trim: true,
   },
 });

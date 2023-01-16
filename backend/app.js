@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 const auth = require('./middlewares/auth');
 const usersRoute = require('./routes/users');
 const cardsRoute = require('./routes/cards');
@@ -14,11 +15,10 @@ const { NotFoundError } = require('./errors/notFoundError');
 const { STATUS_MESSAGE } = require('./utils/STATUS_MESSAGE');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateSignup, validateSignin } = require('./middlewares/celebrate');
-const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
-const { DATABASE__URL } = process.env;
+const { DATABASE__URL = 'mongodb://localhost:27017/mestodb' } = process.env;
 const app = express();
 
 app.use(cors({
@@ -27,7 +27,8 @@ app.use(cors({
     'http://localhost:3001',
     'https://localhost:3001',
     'localhost:3000',
-  ], credentials: true
+  ],
+  credentials: true,
 }));
 
 app.use(bodyParser.json());
@@ -57,7 +58,8 @@ app.post('/signup', validateSignup, createUser);
 app.use('/', auth, usersRoute);
 app.use('/', auth, cardsRoute);
 
-app.use('*', () => {
+app.use('/*', () => {
+  console.log("WTF");
   throw new NotFoundError(STATUS_MESSAGE.PAGE_NOT_FOUND_MESSAGE);
 });
 

@@ -212,7 +212,7 @@ function App() {
     }
 
     useEffect(() => {
-        tokenCheck()
+        tokenCheck();
     }, [])
 
     const handleSignOut = () => {
@@ -230,15 +230,6 @@ function App() {
                 <NoInternetConnection isOpen="true">
                     <Header onSignOut={handleSignOut} email={userEmail} isLoggedIn={isLoggedIn} loginLinkText="Вход" registerLinkText="Регистрация" />
                     <Switch>
-                        <Route path="/signup">
-                            <Register
-                                onRegister={handleRegister} isLoading={isLoading} loadingText="Регистрация..." buttonText="Зарегистрироваться"
-                            />
-                        </Route>
-                        <Route path="/signin">
-                            <Login handleLogin={handleLogin} tokenCheck={tokenCheck} isLoading={isLoading} loadingText="Вход..." buttonText="Войти"
-                            />
-                        </Route>
                         <ProtectedRoute exact path="/"
                             loggedIn={isLoggedIn}
                             onEditProfile={handleEditProfileClick}
@@ -251,6 +242,15 @@ function App() {
                             onCardDelete={handleDeleteBtnClick}
                             component={Main}
                         />
+                        <Route path="/signup">
+                            <Register
+                                onRegister={handleRegister} isLoading={isLoading} loadingText="Регистрация..." buttonText="Зарегистрироваться"
+                            />
+                        </Route>
+                        <Route path="/signin">
+                            <Login handleLogin={handleLogin} tokenCheck={tokenCheck} isLoading={isLoading} loadingText="Вход..." buttonText="Войти"
+                            />
+                        </Route>
                         <Route path="*">
                             <PageNotFound />
                         </Route>

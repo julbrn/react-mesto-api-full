@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { NODE_ENV, SECRET_KEY } = process.env;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
