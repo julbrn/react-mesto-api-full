@@ -14,14 +14,21 @@ const { NotFoundError } = require('./errors/notFoundError');
 const { STATUS_MESSAGE } = require('./utils/STATUS_MESSAGE');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateSignup, validateSignin } = require('./middlewares/celebrate');
-const cors = require('./middlewares/cors');
+const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const { DATABASE__URL } = process.env;
 const app = express();
 
-app.use(cors);
+app.use(cors({
+  origin: ['https://julbrn.nomoredomains.rocks', 'http://julbrn.nomoredomains.rocks', 'https://api.julbrn.nomoredomains.rocks', 'http://api.julbrn.nomoredomains.rocks', 'http://localhost:3000',
+    'https://localhost:3000',
+    'http://localhost:3001',
+    'https://localhost:3001',
+    'localhost:3000',
+  ], credentials: true
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

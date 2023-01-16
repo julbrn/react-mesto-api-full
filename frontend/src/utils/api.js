@@ -26,6 +26,7 @@ class Api {
     return fetch(`${this._serverUrl}/cards`, {
       method: 'GET',
       headers: this._getHeaders(),
+      credentials: 'include',
     })
       .then(this._checkServerResponse);
   }
@@ -35,6 +36,7 @@ class Api {
     return fetch(`${this._serverUrl}/cards`, {
       method: 'POST',
       headers: this._getHeaders(),
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -48,6 +50,7 @@ class Api {
     return fetch(`${this._serverUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this._getHeaders(),
+      credentials: 'include',
     })
       .then(this._checkServerResponse);
   }
@@ -57,6 +60,7 @@ class Api {
     return fetch(`${this._serverUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._getHeaders(),
+      credentials: 'include',
     })
       .then(this._checkServerResponse);
   }
@@ -66,6 +70,7 @@ class Api {
     return fetch(`${this._serverUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._getHeaders(),
+      credentials: 'include',
     })
       .then(this._checkServerResponse)
   }
@@ -75,6 +80,7 @@ class Api {
     return fetch(`${this._serverUrl}/users/me`, {
       method: 'GET',
       headers: this._getHeaders(),
+      credentials: 'include',
     })
       .then(this._checkServerResponse);
   }
@@ -84,6 +90,7 @@ class Api {
     return fetch(`${this._serverUrl}/users/me`, {
       method: 'PATCH',
       headers: this._getHeaders(),
+      credentials: 'include',
       body: JSON.stringify({
         name: userData.name,
         about: userData.about
@@ -97,6 +104,7 @@ class Api {
     return fetch(`${this._serverUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._getHeaders(),
+      credentials: 'include',
       body: JSON.stringify({
         avatar: data.avatar
       })
