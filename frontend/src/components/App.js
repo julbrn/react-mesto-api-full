@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, Redirect } from "react-router-dom";
 import '../index.css';
 import Header from "./Header";
 import Main from "./Main";
@@ -18,7 +18,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import * as auth from "../utils/auth.js";
 import InfoTooltip from "./InfoTooltip";
 import Popup from "./Popup";
-import PageNotFound from "./PageNotFound";
 import NoInternetConnection from "./NoInternetConnection"
 
 function App() {
@@ -252,7 +251,7 @@ function App() {
                             />
                         </Route>
                         <Route path="*">
-                            <PageNotFound />
+                            {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
                         </Route>
                     </Switch>
                     <Footer />

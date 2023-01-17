@@ -58,8 +58,7 @@ app.post('/signup', validateSignup, createUser);
 app.use('/', auth, usersRoute);
 app.use('/', auth, cardsRoute);
 
-app.use('/*', () => {
-  console.log("WTF");
+app.use('/*', auth, () => {
   throw new NotFoundError(STATUS_MESSAGE.PAGE_NOT_FOUND_MESSAGE);
 });
 
