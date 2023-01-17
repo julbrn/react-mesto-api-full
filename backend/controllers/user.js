@@ -30,13 +30,7 @@ const createUser = (req, res, next) => {
     name, about, avatar, email, password,
   } = req.body;
   bcrypt.hash(password, 10)
-    .then((hash) => User.create({
-      name,
-      about,
-      avatar,
-      email,
-      password: hash,
-    }))
+    .then((hash) => User.create({ ...req.body, password: hash }))
     .then((user) => res.status(201).send({
       data: {
         _id: user._id,
@@ -51,8 +45,7 @@ const createUser = (req, res, next) => {
         next(new ConflictError(STATUS_MESSAGE.CONFLICT_MESSAGE));
       } else if (err.name === 'ValidationError') {
         next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
-      }
-      return next(err);
+      } else next(err);
     });
 };
 
@@ -62,9 +55,7 @@ const updateProfile = (req, res, next) => {
     .orFail(new NotFoundError(STATUS_MESSAGE.NONEXISTENT_USER_MESSAGE))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
-      } else if (err.name === 'CastError') {
+      if (err.name === 'ValidationError' || err.name === 'CastError') {
         next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
       } else {
         next(err);
@@ -80,9 +71,7 @@ const updateAvatar = (req, res, next) => {
   }).orFail(new NotFoundError(STATUS_MESSAGE.NONEXISTENT_USER_MESSAGE))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
-      } else if (err.name === 'CastError') {
+      if (err.name === 'ValidationError' || err.name === 'CastError') {
         next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
       } else {
         next(err);
@@ -95,9 +84,6 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      if (!user) {
-        throw new NotFoundError(STATUS_MESSAGE);
-      }
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret',

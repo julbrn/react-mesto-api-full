@@ -2,7 +2,6 @@ const Card = require('../models/card');
 const { NotFoundError } = require('../errors/notFoundError');
 const { ForbiddenError } = require('../errors/forbiddenError');
 const { BadRequestError } = require('../errors/badRequestError');
-const { STATUS_CODE } = require('../utils/STATUS_CODE');
 const { STATUS_MESSAGE } = require('../utils/STATUS_MESSAGE');
 
 const getCards = (req, res, next) => Card.find({})
@@ -16,7 +15,6 @@ const createCard = (req, res, next) => {
     .then((cards) => res.send(cards))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(STATUS_CODE.BAD_REQUEST_CODE);
         next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
       } else {
         next(err);
@@ -56,7 +54,7 @@ const likeCard = (req, res, next) => {
     .then((card) => res.status(200).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        throw new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE);
+        next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
       } else {
         next(err);
       }
@@ -71,7 +69,7 @@ const dislikeCard = (req, res, next) => {
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        throw new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE);
+        next(new BadRequestError(STATUS_MESSAGE.INCORRECT_DATA_MESSAGE));
       } else {
         next(err);
       }
